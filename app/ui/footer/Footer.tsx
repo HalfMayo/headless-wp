@@ -3,7 +3,7 @@ import NavLinks from "../NavLinks";
 
 export default function Footer() {
   return (
-    <footer className="flex items-center justify- center w-full h-[25vh]">
+    <footer className="flex items-center justify-center w-[80vw] h-[25vh]">
       <div className="w-2/4">
         <h3>The Book Club</h3>
       </div>

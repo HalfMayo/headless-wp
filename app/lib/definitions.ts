@@ -15,3 +15,16 @@ export type PostSum = {
         }[]
     }
 }
+
+export type Author = {
+
+          avatar: {
+            url: string
+          },
+          description: string,
+          firstName: string,
+          lastName: string,
+          name: string,
+          role?: string
+        }
+      
