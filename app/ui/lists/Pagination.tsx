@@ -22,7 +22,7 @@ export default function Pagination({ listLength }: { listLength: number }) {
     <Link
       href={displayed + 10 - listLength > 10 ? "" : createURL(displayed + 10)}
     >
-      <button className="w-auto h-auto bg-white py-2 px-3 rounded-full font-bold text-black mt-8">
+      <button className="w-auto h-auto dark:bg-white bg-black py-2 px-3 rounded-full font-bold dark:text-black text-white mt-8">
         {" "}
         Load more
       </button>

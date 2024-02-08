@@ -31,7 +31,7 @@ export default async function ReviewsList({
         {cleanRev.map((review: PostSum) => (
           <li
             key={review.uri}
-            className="w-[15vw] h-[30vh] border-white border-2"
+            className="w-[15vw] h-[30vh] dark:border-white border-black border-2"
           >
             <Link href={`/reviews/review${review.uri}`}>
               <div className="relative h-2/4 w-full overflow-hidden">

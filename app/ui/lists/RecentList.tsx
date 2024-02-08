@@ -17,7 +17,10 @@ export default async function RecentList() {
   return (
     <ul className="flex gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
       {cleanPosts.map((post: PostSum) => (
-        <li key={post.uri} className="w-[15vw] h-[30vh] border-white border-2">
+        <li
+          key={post.uri}
+          className="w-[15vw] h-[30vh] dark:border-white border-black border-2"
+        >
           <Link
             href={`/${
               post.categories.nodes[0].name === "Episodes"

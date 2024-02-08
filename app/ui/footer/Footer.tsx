@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NavLinks from "../NavLinks";
+import NavLinks from "../menu/NavLinks";
 
 export default function Footer() {
   return (

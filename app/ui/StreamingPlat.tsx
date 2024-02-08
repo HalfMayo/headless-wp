@@ -20,7 +20,7 @@ export default function StreamingPlat() {
     <div className="flex items-center justify-center gap-8">
       {streaming.map((el) => (
         <Link key={el.name} href={el.href}>
-          <button className="p-2 bg-white text-black rounded-md font-bold">
+          <button className="p-2 bg-black text-white dark:bg-white dark:text-black rounded-md font-bold">
             {el.name.toUpperCase()}
           </button>
         </Link>

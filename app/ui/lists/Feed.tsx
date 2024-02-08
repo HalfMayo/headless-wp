@@ -1,5 +1,5 @@
-import { getIGPosts } from "../lib/data";
-import Carousel from "./storybook_components/Carousel";
+import { getIGPosts } from "../../lib/data";
+import Carousel from "./Carousel";
 
 export default async function Feed() {
   const posts = await getIGPosts();

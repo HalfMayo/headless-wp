@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./ui/header/Header";
 import Footer from "./ui/footer/Footer";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +20,17 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} flex flex-col items-center justify-center relative`}
+        className={`${inter.className} flex flex-col items-center justify-center relative dark:bg-black dark:text-white`}
       >
-        <Header />
-        {children}
-        {modal}
-        <div id="modal-root" />
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          {modal}
+          <div id="modal-root" />
+          <Footer />
+        </Providers>
         {/* FOOTER (LOGO + MENU + CONTACTS) */}
       </body>
     </html>

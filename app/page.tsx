@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import RecentList from "./ui/lists/RecentList";
 import Image from "next/image";
 import StreamingPlat from "./ui/StreamingPlat";
-import Feed from "./ui/Feed";
+import Feed from "./ui/lists/Feed";
+import Hero from "./ui/Hero";
 
 export default function Page() {
   return (
@@ -11,7 +12,9 @@ export default function Page() {
       <section className="h-[90vh] w-full flex items-center justify-center">
         <div className="w-full flex items-end justify-center">
           <h1>
-            <span className="text-xl pl-3">the</span>
+            <span className="text-2xl pl-3 font-semibold tracking-wide">
+              the
+            </span>
             <br />
             <span className="font-semibold text-[200px] leading-[175px]">
               Book
@@ -20,7 +23,7 @@ export default function Page() {
             <span className="font-bold text-[250px] leading-[225px]">Club</span>
           </h1>
           <p className="font-light text-[445px] leading-none">\</p>
-          <Image src="/pg.png" alt="Character" width={319} height={890} />
+          <Hero />
         </div>
       </section>
       {/* RECENT ACTIVITIES (REVIEWS + PODCASTS) */}

@@ -29,7 +29,7 @@ export default async function EpisodesList({
         {cleanEp.map((episode: PostSum) => (
           <li
             key={episode.uri}
-            className="w-[15vw] h-[30vh] border-white border-2"
+            className="w-[15vw] h-[30vh] dark:border-white border-black border-2"
           >
             <Link href={`/episodes/episode${episode.uri}`}>
               <div className="relative h-2/4 w-full overflow-hidden">
