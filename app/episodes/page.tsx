@@ -21,6 +21,7 @@ export default async function Page({
         <div className="flex flex-col items-center justify-center gap-8">
           <h2 className="text-4xl">{cleanEpisodes.title}</h2>
           <div
+            className="sm:text-md text-lg"
             dangerouslySetInnerHTML={{ __html: `${cleanEpisodes.content}` }}
           ></div>
         </div>
@@ -28,7 +29,7 @@ export default async function Page({
           <EpisodesList displayed={displayed} />
         </Suspense>
         <div>
-          <h3 className="text-2xl mb-8">
+          <h3 className="text-2xl mb-8 text-center">
             Listen to our podcast on the main streaming platforms!
           </h3>
           <StreamingPlat />

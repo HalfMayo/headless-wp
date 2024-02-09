@@ -20,6 +20,7 @@ export default async function Page({
         <div className="flex flex-col items-center justify-center gap-8">
           <h2 className="text-4xl">{cleanReviews.title}</h2>
           <div
+            className="sm:text-md text-lg"
             dangerouslySetInnerHTML={{ __html: `${cleanReviews.content}` }}
           />
         </div>

@@ -15,7 +15,9 @@ export default function MobileSidenav() {
       >
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="w-12 h-12 rounded-full border-2 border-black bg-white flex items-center justify-center"
+          className={`w-12 h-12 rounded-full border-2 border-white bg-white flex items-center justify-center ${
+            !isOpen ? "pb-1" : ""
+          }`}
         >
           <Image
             width={36}
@@ -23,8 +25,8 @@ export default function MobileSidenav() {
             alt="Menu icon"
             src={
               !isOpen
-                ? "/hamburger-menu-svgrepo-com.svg"
-                : "/close-circle-svgrepo-com.svg"
+                ? "/hamburger-7-svgrepo-com.svg"
+                : "/close-bold-svgrepo-com.svg"
             }
           />
         </button>
@@ -39,7 +41,7 @@ export default function MobileSidenav() {
             isOpen ? "w-[60vw]" : "w-0"
           }`}
         >
-          <NavLinks orientation="mobile" />
+          <NavLinks orientation="mobile" setIsOpen={setIsOpen} />
           {/* SOCIAL MEDIA */}
           <h2 className="font-bold text-xl pl-8 py-2 bg-black text-white w-full">
             Follow us!

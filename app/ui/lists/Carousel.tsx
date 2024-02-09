@@ -24,7 +24,7 @@ export default function Carousel({
 
   const list = posts.map((post: PostSum) => (
     <li key={post.uri} className="h-[300px] mx-[4px] w-[300px]">
-      <Link href={`/feed${post.uri}`} passHref>
+      <Link href={`/feed${post.uri}`} scroll={false} passHref>
         <Image
           src={post.featuredImage.node.sourceUrl}
           alt="IG post"

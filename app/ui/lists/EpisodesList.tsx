@@ -20,16 +20,16 @@ export default async function EpisodesList({
   const emptySpaces = [];
 
   for (let i = 0; i < 5 - (episodes.length % 5); i++) {
-    emptySpaces.push(<li className="w-[15vw] h-[30vh]" />);
+    emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
   }
 
   return (
     <>
-      <ul className="flex gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
+      <ul className="flex flex-col sm:flex-row gap-4 sm:gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
         {cleanEp.map((episode: PostSum) => (
           <li
             key={episode.uri}
-            className="w-[15vw] h-[30vh] dark:border-white border-black border-2"
+            className="w-[80vw] h-[40vh] sm:w-[15vw] sm:h-[30vh] dark:border-white border-black border-2"
           >
             <Link href={`/episodes/episode${episode.uri}`}>
               <div className="relative h-2/4 w-full overflow-hidden">

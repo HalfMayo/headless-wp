@@ -1,4 +1,4 @@
-import { getEpisodes, getReviews } from "@/app/lib/data";
+import { getReviews } from "@/app/lib/data";
 import { PostSum } from "@/app/lib/definitions";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
@@ -21,17 +21,17 @@ export default async function ReviewsList({
 
   if (reviews.length % 5 !== 0) {
     for (let i = 0; i < 5 - (reviews.length % 5); i++) {
-      emptySpaces.push(<li className="w-[15vw] h-[30vh]" />);
+      emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
     }
   }
 
   return (
     <>
-      <ul className="flex gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
+      <ul className="flex flex-col sm:flex-row gap-4 sm:gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
         {cleanRev.map((review: PostSum) => (
           <li
             key={review.uri}
-            className="w-[15vw] h-[30vh] dark:border-white border-black border-2"
+            className="w-[80vw] h-[40vh] sm:w-[15vw] sm:h-[30vh] dark:border-white border-black border-2"
           >
             <Link href={`/reviews/review${review.uri}`}>
               <div className="relative h-2/4 w-full overflow-hidden">

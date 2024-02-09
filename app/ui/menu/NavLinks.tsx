@@ -22,8 +22,10 @@ const menu = [
 
 export default function NavLinks({
   orientation = "hor",
+  setIsOpen = () => null,
 }: {
   orientation?: "hor" | "ver" | "mobile";
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <nav
@@ -42,6 +44,7 @@ export default function NavLinks({
             "px-4": orientation === "hor",
             "p-0": orientation === "ver",
           })}
+          onClick={() => setIsOpen((prev) => !prev)}
         >
           {el.page}
         </Link>

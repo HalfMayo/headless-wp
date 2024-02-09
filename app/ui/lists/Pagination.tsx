@@ -21,6 +21,7 @@ export default function Pagination({ listLength }: { listLength: number }) {
   return (
     <Link
       href={displayed + 10 - listLength > 10 ? "" : createURL(displayed + 10)}
+      scroll={false}
     >
       <button className="w-auto h-auto dark:bg-white bg-black py-2 px-3 rounded-full font-bold dark:text-black text-white mt-8">
         {" "}
