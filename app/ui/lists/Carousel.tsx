@@ -4,20 +4,23 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PostSum } from "@/app/lib/definitions";
+import useDeviceSize from "@/app/hooks/useDeviceSize";
 
 export default function Carousel({
   posts,
-  cardNum = 3,
+  cardNum = 1,
 }: {
   posts: PostSum[];
   cardNum?: number;
 }) {
+  const [height, width] = useDeviceSize();
   const prevEls = [];
   const nextEls = [];
   const [currentSlide, setCurrentSlide] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [disabledButtons, setDisabledButtons] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  if (width && width > 640) cardNum = 3;
 
   const list = posts.map((post: PostSum) => (
     <li key={post.uri} className="h-[300px] mx-[4px] w-[300px]">
@@ -85,13 +88,17 @@ export default function Carousel({
   return (
     <div className="relative flex items-center gap-4">
       <button
-        className="sm:static absolute left-[50%] translate-x-[-85%] top-[100%] w-12 h-12 text-2xl"
+        className="sm:static absolute z-40 sm:left-[50%] sm:translate-x-[-85%] sm:top-[100%] w-12 h-12 text-2xl"
         aria-label="Previous Card"
         onClick={handlePrevious}
       >
         &lt;
       </button>
-      <ul className="list-none w-[924px] overflow-hidden p-0 pb-3">
+      <ul
+        className={`list-none overflow-hidden p-0 pb-3 ${
+          cardNum === 1 ? "w-[308px]" : "w-[924px]"
+        }`}
+      >
         <div
           className={`flex items-center m-0 p-0 ${
             transitionEnabled ? "transition duration-1000" : ""
@@ -112,7 +119,7 @@ export default function Carousel({
         </div>
       </ul>
       <button
-        className="sm:static absolute right-[50%] translate-x-[85%] top-[100%] w-12 h-12 text-2xl"
+        className="sm:static absolute right-0 sm:right-[50%] sm:translate-x-[85%] sm:top-[100%] w-12 h-12 text-2xl"
         aria-label="Next Card"
         onClick={handleNext}
       >

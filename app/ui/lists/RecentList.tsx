@@ -15,11 +15,11 @@ export default async function RecentList() {
   }));
 
   return (
-    <ul className="flex gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
+    <ul className="flex flex-col sm:flex-row gap-4 sm:gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
       {cleanPosts.map((post: PostSum) => (
         <li
           key={post.uri}
-          className="w-[15vw] h-[30vh] dark:border-white border-black border-2"
+          className="w-[80vw] h-[40vh] sm:w-[15vw] sm:h-[30vh] dark:border-white border-black border-2"
         >
           <Link
             href={`/${
@@ -47,8 +47,10 @@ export default async function RecentList() {
               <h3 className="text-lg font-semibold">{post.title}</h3>
               <div
                 className={clsx("text-ellipsis", {
-                  "line-clamp-4": post.categories.nodes[0].name === "Reviews",
-                  "line-clamp-5": post.categories.nodes[0].name === "Episodes",
+                  "sm:line-clamp-4 line-clamp-3":
+                    post.categories.nodes[0].name === "Reviews",
+                  "sm:line-clamp-5 line-clamp-4":
+                    post.categories.nodes[0].name === "Episodes",
                 })}
                 dangerouslySetInnerHTML={{ __html: `${post.excerpt}` }}
               />

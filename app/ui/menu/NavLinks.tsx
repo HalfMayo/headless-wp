@@ -23,12 +23,14 @@ const menu = [
 export default function NavLinks({
   orientation = "hor",
 }: {
-  orientation?: "hor" | "ver";
+  orientation?: "hor" | "ver" | "mobile";
 }) {
   return (
     <nav
       className={clsx("flex", {
         "items-center justify-center": orientation === "hor",
+        "flex-col justify-center gap-4 p-8 font-semibold text-xl":
+          orientation === "mobile",
         "flex-col justify-center": orientation === "ver",
       })}
     >

@@ -1,13 +1,16 @@
 "use client";
 
+import useDeviceSize from "@/app/hooks/useDeviceSize";
 import { useTheme } from "next-themes";
 
 export default function Toggle() {
   const { theme, setTheme } = useTheme();
+  const [height, width] = useDeviceSize();
+
   return (
-    <div className="flex gap-4 items-center justify-between pl-4">
+    <div className="flex gap-4 items-center justify-between pl-8 sm:pl-4">
       <div className="flex gap-2 items-center">
-        <p>Dark</p>
+        {width && width > 640 && <p>Dark</p>}
         <label className="switch">
           <input
             type="checkbox"
@@ -19,7 +22,7 @@ export default function Toggle() {
           />
           <span className="toggle"></span>
         </label>
-        <p>Light</p>
+        {width && width > 640 && <p>Light</p>}
       </div>
     </div>
   );
