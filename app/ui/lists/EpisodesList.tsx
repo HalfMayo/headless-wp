@@ -17,22 +17,22 @@ export default async function EpisodesList({
     content: DOMPurify.sanitize(post.content),
   }));
 
-  const emptySpaces = [];
+  // const emptySpaces = [];
 
-  for (let i = 0; i < 5 - (episodes.length % 5); i++) {
-    emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
-  }
+  // for (let i = 0; i < 5 - (episodes.length % 5); i++) {
+  //   emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
+  // }
 
   return (
     <>
-      <ul className="flex flex-col sm:flex-row gap-4 sm:gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
+      <ul className="flex flex-col sm:flex-row gap-4 sm:gap-0 w-[80vw] flex-wrap items-center justify-start">
         {cleanEp.map((episode: PostSum) => (
           <li
             key={episode.uri}
-            className="w-[80vw] h-[40vh] sm:w-[15vw] sm:h-[30vh] dark:border-white border-black border-2"
+            className="w-[80vw] h-fit sm:w-[24.5vw] lg:w-[18vw] 2xl:w-[15vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2"
           >
             <Link href={`/episodes/episode${episode.uri}`}>
-              <div className="relative h-2/4 w-full overflow-hidden">
+              <div className="relative h-[20vh] w-full overflow-hidden">
                 <Image
                   src={episode.featuredImage.node.sourceUrl}
                   alt="Image preview"
@@ -47,7 +47,7 @@ export default async function EpisodesList({
                   }}
                 />
               </div>
-              <div className="h-2/4 gap-2 flex flex-col p-4">
+              <div className="gap-2 flex flex-col p-4">
                 <h3 className="text-lg font-semibold">{episode.title}</h3>
                 <div
                   className="text-ellipsis line-clamp-5"
@@ -57,7 +57,7 @@ export default async function EpisodesList({
             </Link>
           </li>
         ))}
-        {emptySpaces}
+        {/* {emptySpaces} */}
       </ul>
       <Pagination listLength={episodes.length} />
     </>

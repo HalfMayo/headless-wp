@@ -17,24 +17,24 @@ export default async function ReviewsList({
     content: DOMPurify.sanitize(post.content),
   }));
 
-  const emptySpaces = [];
+  // const emptySpaces = [];
 
-  if (reviews.length % 5 !== 0) {
-    for (let i = 0; i < 5 - (reviews.length % 5); i++) {
-      emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
-    }
-  }
+  // if (reviews.length % 5 !== 0) {
+  //   for (let i = 0; i < 5 - (reviews.length % 5); i++) {
+  //     emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
+  //   }
+  // }
 
   return (
     <>
-      <ul className="flex flex-col sm:flex-row gap-4 sm:gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
+      <ul className="flex flex-col sm:flex-row gap-4 sm:gap-0 w-[80vw] flex-wrap items-center justify-start">
         {cleanRev.map((review: PostSum) => (
           <li
             key={review.uri}
-            className="w-[80vw] h-[40vh] sm:w-[15vw] sm:h-[30vh] dark:border-white border-black border-2"
+            className="w-[80vw] h-fit sm:w-[24.5vw] lg:w-[18vw] 2xl:w-[15vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2"
           >
             <Link href={`/reviews/review${review.uri}`}>
-              <div className="relative h-2/4 w-full overflow-hidden">
+              <div className="relative h-[20vh] w-full overflow-hidden">
                 <Image
                   src={review.featuredImage.node.sourceUrl}
                   alt="Image preview"
@@ -49,8 +49,10 @@ export default async function ReviewsList({
                   }}
                 />
               </div>
-              <div className="h-2/4 gap-2 flex flex-col p-4">
-                <h3 className="text-lg font-semibold">{review.title}</h3>
+              <div className="gap-2 flex flex-col p-4 ">
+                <h3 className="text-lg font-semibold line-clamp-2 text-ellipsis">
+                  {review.title}
+                </h3>
                 <div
                   className="line-clamp-4 text-ellipsis"
                   dangerouslySetInnerHTML={{ __html: `${review.excerpt}` }}
@@ -59,7 +61,7 @@ export default async function ReviewsList({
             </Link>
           </li>
         ))}
-        {emptySpaces}
+        {/* {emptySpaces} */}
       </ul>
       <Pagination listLength={reviews.length} />
     </>

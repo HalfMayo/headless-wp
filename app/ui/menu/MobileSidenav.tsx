@@ -3,9 +3,13 @@ import { useState } from "react";
 import NavLinks from "./NavLinks";
 import Toggle from "./Toggle";
 import SocialMediaLinks from "./SocialMediaLinks";
+import Hamburger from "../../../public/hamburger-7-svgrepo-com.svg";
+import Close from "../../../public/close-bold-svgrepo-com.svg";
+import { useTheme } from "next-themes";
 
 export default function MobileSidenav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { theme } = useTheme();
   return (
     <>
       <div
@@ -15,25 +19,32 @@ export default function MobileSidenav() {
       >
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`w-12 h-12 rounded-full border-2 border-white bg-white flex items-center justify-center ${
+          className={`w-12 h-12 rounded-full border-2 dark:border-black border-white dark:bg-black bg-white flex items-center justify-center ${
             !isOpen ? "pb-1" : ""
           }`}
         >
-          <Image
-            width={36}
-            height={36}
-            alt="Menu icon"
-            src={
-              !isOpen
-                ? "/hamburger-7-svgrepo-com.svg"
-                : "/close-bold-svgrepo-com.svg"
-            }
-          />
+          {!isOpen ? (
+            <Hamburger
+              width={36}
+              height={36}
+              fill={theme === "dark" ? "white" : "black"}
+            />
+          ) : (
+            <Close
+              width={36}
+              height={36}
+              fill={theme === "dark" ? "white" : "black"}
+            />
+          )}
         </button>
       </div>
       <div
         className={`${
-          isOpen ? "bg-black/[.6] w-screen" : "transparent w-0"
+          isOpen && theme === "light"
+            ? "bg-black/[.6] w-screen"
+            : isOpen && theme === "dark"
+            ? "bg-white/[.6] w-screen"
+            : "transparent w-0"
         } h-screen transition-colors duration-500 fixed z-30 top-0 left-0`}
       >
         <aside
@@ -43,7 +54,7 @@ export default function MobileSidenav() {
         >
           <NavLinks orientation="mobile" setIsOpen={setIsOpen} />
           {/* SOCIAL MEDIA */}
-          <h2 className="font-bold text-xl pl-8 py-2 bg-black text-white w-full">
+          <h2 className="font-bold text-xl pl-8 py-2 dark:bg-white bg-black text-white dark:text-black w-full">
             Follow us!
           </h2>
           <SocialMediaLinks orientation="mobile" />

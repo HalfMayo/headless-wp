@@ -15,11 +15,11 @@ export default async function RecentList() {
   }));
 
   return (
-    <ul className="flex flex-col sm:flex-row gap-4 sm:gap-[1vw] w-[80vw] flex-wrap items-center justify-center">
+    <ul className="flex flex-col sm:flex-row gap-4 sm:gap-0 w-[80vw] flex-wrap items-center justify-start">
       {cleanPosts.map((post: PostSum) => (
         <li
           key={post.uri}
-          className="w-[80vw] h-[40vh] sm:w-[15vw] sm:h-[30vh] dark:border-white border-black border-2"
+          className="h-fit sm:w-[24.5vw] lg:w-[18vw] 2xl:w-[15vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2"
         >
           <Link
             href={`/${
@@ -28,7 +28,7 @@ export default async function RecentList() {
                 : "reviews/review"
             }${post.uri}`}
           >
-            <div className="relative h-2/4 w-full overflow-hidden">
+            <div className="relative h-[20vh] w-full overflow-hidden">
               <Image
                 src={post.featuredImage.node.sourceUrl}
                 alt="Image preview"
@@ -43,7 +43,7 @@ export default async function RecentList() {
                 }}
               />
             </div>
-            <div className="h-2/4 gap-2 flex flex-col p-4">
+            <div className="gap-2 flex flex-col p-4">
               <h3 className="text-lg font-semibold">{post.title}</h3>
               <div
                 className={clsx("text-ellipsis", {

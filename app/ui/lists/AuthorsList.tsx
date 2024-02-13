@@ -14,8 +14,10 @@ export default async function AuthorsList() {
       {profilesWithRoles.map((profile: Author, i: number) => (
         <li
           key={profile.name}
-          className={`w-full h-auto flex ${
-            i % 2 !== 0 ? "flex-row-reverse text-right" : ""
+          className={`w-[80vw] sm:w-full h-auto flex flex-col items-center justify-center text-center gap-4 ${
+            i % 2 !== 0
+              ? "sm:flex-row-reverse sm:text-right"
+              : "sm:flex-row sm:text-left"
           }`}
         >
           <div className="w-1/6 h-full flex items-center justify-center">
@@ -26,7 +28,7 @@ export default async function AuthorsList() {
               height={100}
             />
           </div>
-          <div className="w-4/6 h-full flex flex-col justify-center">
+          <div className="w-full sm:w-4/6 h-full flex flex-col justify-center">
             <h3 className="text-2xl font-bold mb-1">
               {profile.firstName} {profile.lastName}
             </h3>

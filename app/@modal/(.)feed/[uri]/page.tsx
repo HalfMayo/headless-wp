@@ -16,9 +16,11 @@ export default async function Page({ params }: { params: { uri: string } }) {
           alt="IG post"
           width={500}
           height={500}
+          sizes="(max-width: 640px) 80vw, 500px"
+          style={{ width: "100%" }}
         />
       </div>
-      <div className="w-2/4 flex flex-col py-8 pl-8 pr-12 gap-8">
+      <div className="sm:w-2/4 flex flex-col py-8 pl-4 pr-4 sm:pl-8 sm:pr-12 gap-8 overflow-auto">
         <div className="flex items-center gap-4 w-full">
           <div className="rounded-full h-[50px] w-[50px] overflow-hidden">
             <Image
@@ -40,7 +42,7 @@ export default async function Page({ params }: { params: { uri: string } }) {
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: `${cleanPost.content}` }}
-          className="overflow-auto"
+          className="overflow-auto px-4 sm:px-0"
         />
       </div>
     </Modal>

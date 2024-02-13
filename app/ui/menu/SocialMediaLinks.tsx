@@ -1,35 +1,63 @@
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
-
-const menu = [
-  {
-    page: "Instagram",
-    href: "/",
-    icon: "/instagram-logo-fill-svgrepo-com.svg",
-  },
-  {
-    page: "TikTok",
-    href: "/",
-    icon: "/tiktok-logo-fill-svgrepo-com.svg",
-  },
-  {
-    page: "Twitch",
-    href: "/",
-    icon: "/twitch-logo-fill-svgrepo-com.svg",
-  },
-  {
-    page: "Email",
-    href: "/",
-    icon: "/envelope-simple-open-fill-svgrepo-com.svg",
-  },
-];
+import Instagram from "../../../public/instagram-logo-fill-svgrepo-com.svg";
+import TikTok from "../../../public/tiktok-logo-fill-svgrepo-com.svg";
+import Twitch from "../../../public/twitch-logo-fill-svgrepo-com.svg";
+import Email from "../../../public/envelope-simple-open-fill-svgrepo-com.svg";
+import { useTheme } from "next-themes";
 
 export default function SocialMediaLinks({
   orientation = "ver",
 }: {
   orientation?: "ver" | "mobile" | "mobile-hor";
 }) {
+  const { theme } = useTheme();
+  const menu = [
+    {
+      page: "Instagram",
+      href: "/",
+      icon: (
+        <Instagram
+          width={48}
+          height={48}
+          fill={theme === "dark" ? "white" : "black"}
+        />
+      ),
+    },
+    {
+      page: "TikTok",
+      href: "/",
+      icon: (
+        <TikTok
+          width={48}
+          height={48}
+          fill={theme === "dark" ? "white" : "black"}
+        />
+      ),
+    },
+    {
+      page: "Twitch",
+      href: "/",
+      icon: (
+        <Twitch
+          width={48}
+          height={48}
+          fill={theme === "dark" ? "white" : "black"}
+        />
+      ),
+    },
+    {
+      page: "Email",
+      href: "/",
+      icon: (
+        <Email
+          width={48}
+          height={48}
+          fill={theme === "dark" ? "white" : "black"}
+        />
+      ),
+    },
+  ];
   return (
     <nav
       className={clsx("flex", {
@@ -48,11 +76,7 @@ export default function SocialMediaLinks({
             "p-0": orientation === "ver",
           })}
         >
-          {orientation === "mobile-hor" ? (
-            <Image width={48} height={48} alt={el.page} src={el.icon} />
-          ) : (
-            el.page
-          )}
+          {orientation === "mobile-hor" ? el.icon : el.page}
         </Link>
       ))}
     </nav>
