@@ -21,6 +21,7 @@ export default async function Page() {
             height={400}
             alt="about page pic"
             className="hidden sm:inline"
+            style={{ clipPath: "circle(40%)" }}
           />
           <div className="flex flex-col gap-8 justify-center">
             <h2 className="text-4xl">{cleanAbout.title}</h2>

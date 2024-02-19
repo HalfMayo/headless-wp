@@ -9,7 +9,7 @@ export default async function Page({
 }: {
   searchParams?: { displayed: string };
 }) {
-  const displayed = Number(searchParams?.displayed) || 10;
+  const displayed = Number(searchParams?.displayed) || 8;
   const reviewsPage = await getPage("/the-book-club-reviews/");
   const cleanReviews = {
     title: DOMPurify.sanitize(reviewsPage.title),
@@ -25,6 +25,7 @@ export default async function Page({
             height={400}
             alt="reviews page pic"
             className="hidden sm:inline"
+            style={{ clipPath: "circle(40%)" }}
           />
           <div className="flex flex-col justify-center gap-8">
             <h2 className="text-4xl">{cleanReviews.title}</h2>

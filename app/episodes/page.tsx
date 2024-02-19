@@ -10,7 +10,7 @@ export default async function Page({
 }: {
   searchParams: { displayed: number };
 }) {
-  const displayed = Number(searchParams?.displayed) || 10;
+  const displayed = Number(searchParams?.displayed) || 8;
   const episodesPage = await getPage("/the-book-club-episodes/");
   const cleanEpisodes = {
     title: DOMPurify.sanitize(episodesPage.title),
@@ -26,6 +26,7 @@ export default async function Page({
             height={400}
             alt="episodes page pic"
             className="hidden sm:inline"
+            style={{ clipPath: "circle(40%)" }}
           />
           <div className="flex flex-col justify-center gap-8">
             <h2 className="text-4xl">{cleanEpisodes.title}</h2>

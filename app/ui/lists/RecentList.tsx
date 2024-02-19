@@ -19,7 +19,7 @@ export default async function RecentList() {
       {cleanPosts.map((post: PostSum) => (
         <li
           key={post.uri}
-          className="h-fit sm:w-[24.5vw] lg:w-[18vw] 2xl:w-[15vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2"
+          className="h-fit sm:w-[24.5vw] lg:w-[18vw] 2xl:w-[15vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2 rounded-lg"
         >
           <Link
             href={`/${
@@ -28,7 +28,7 @@ export default async function RecentList() {
                 : "reviews/review"
             }${post.uri}`}
           >
-            <div className="relative h-[20vh] w-full overflow-hidden">
+            <div className="relative h-[20vh] w-full overflow-hidden rounded-t-lg">
               <Image
                 src={post.featuredImage.node.sourceUrl}
                 alt="Image preview"
@@ -43,19 +43,37 @@ export default async function RecentList() {
                 }}
               />
             </div>
-            <div className="gap-2 flex flex-col p-4">
-              <h3 className="text-lg font-semibold line-clamp-2 text-ellipsis">
-                {post.title}
-              </h3>
-              <div
-                className={clsx("text-ellipsis", {
-                  "sm:line-clamp-4 line-clamp-3":
-                    post.categories.nodes[0].name === "Reviews",
-                  "sm:line-clamp-5 line-clamp-4":
-                    post.categories.nodes[0].name === "Episodes",
-                })}
-                dangerouslySetInnerHTML={{ __html: `${post.excerpt}` }}
-              />
+            <div className="gap-2 flex flex-col p-4 ">
+              <div className="flex h-[50px] gap-2">
+                <Image
+                  src="/IGprofile.jpg"
+                  alt="author avatar"
+                  width={50}
+                  height={50}
+                  style={{ clipPath: "circle(40%)" }}
+                />
+                <div className="flex flex-col gap-1 h-full justify-center">
+                  <p className="text-sm">The Book Club Team</p>
+                  <p className="text-sm">Mar, 1 2024</p>
+                </div>
+              </div>
+              <div className="h-44">
+                <h3 className="text-lg font-semibold line-clamp-2 text-ellipsis mb-2">
+                  {post.title}
+                </h3>
+                <div
+                  className="line-clamp-4 text-ellipsis"
+                  dangerouslySetInnerHTML={{ __html: `${post.excerpt}` }}
+                />
+              </div>
+              <hr />
+              <p className="text-sm">
+                {post.categories.nodes[0].name === "Episodes"
+                  ? `Monthly plays: ${Math.ceil(
+                      Math.random() * 100000
+                    ).toLocaleString()}`
+                  : `Comments:`}
+              </p>
             </div>
           </Link>
         </li>

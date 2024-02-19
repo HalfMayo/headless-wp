@@ -29,10 +29,10 @@ export default async function EpisodesList({
         {cleanEp.map((episode: PostSum) => (
           <li
             key={episode.uri}
-            className="w-[80vw] h-fit sm:w-[24.5vw] lg:w-[18vw] 2xl:w-[15vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2"
+            className="w-[80vw] sm:w-[24.5vw] lg:w-[18vw] sm:mx-2 sm:mb-4 dark:border-white border-black border-2 rounded-lg"
           >
             <Link href={`/episodes/episode${episode.uri}`}>
-              <div className="relative h-[20vh] w-full overflow-hidden">
+              <div className="relative h-[20vh] w-full overflow-hidden rounded-t-lg">
                 <Image
                   src={episode.featuredImage.node.sourceUrl}
                   alt="Image preview"
@@ -47,12 +47,34 @@ export default async function EpisodesList({
                   }}
                 />
               </div>
-              <div className="gap-2 flex flex-col p-4">
-                <h3 className="text-lg font-semibold">{episode.title}</h3>
-                <div
-                  className="text-ellipsis line-clamp-5"
-                  dangerouslySetInnerHTML={{ __html: `${episode.excerpt}` }}
-                />
+              <div className="gap-2 flex flex-col p-4 ">
+                <div className="flex h-[50px] gap-2">
+                  <Image
+                    src="/IGprofile.jpg"
+                    alt="author avatar"
+                    width={50}
+                    height={50}
+                    style={{ clipPath: "circle(40%)" }}
+                  />
+                  <div className="flex flex-col gap-1 h-full justify-center">
+                    <p className="text-sm">The Book Club Team</p>
+                    <p className="text-sm">Mar, 1 2024</p>
+                  </div>
+                </div>
+                <div className="h-44">
+                  <h3 className="text-lg font-semibold line-clamp-2 text-ellipsis mb-2">
+                    {episode.title}
+                  </h3>
+                  <div
+                    className="line-clamp-4 text-ellipsis"
+                    dangerouslySetInnerHTML={{ __html: `${episode.excerpt}` }}
+                  />
+                </div>
+                <hr />
+                <p className="text-sm">
+                  Monthly plays:{" "}
+                  {Math.ceil(Math.random() * 100000).toLocaleString()}
+                </p>
               </div>
             </Link>
           </li>

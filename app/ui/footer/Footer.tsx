@@ -18,18 +18,33 @@ export default function Footer() {
     );
   }
   return (
-    <footer className="flex items-center justify-center w-[80vw] h-[25vh]">
-      <div className="w-2/4">
-        <h3>The Book Club</h3>
+    <footer className="relative w-full">
+      <div
+        className="relative flex w-full items-center justify-center h-[25vh] z-30 bg-white dark:bg-black text-black dark:text-white"
+        style={{ clipPath: "polygon(0 30%, 100% 17%, 100% 100%, 0 100%)" }}
+      >
+        <div className="w-[80vw] flex items-center justify-center h-full">
+          <div className="w-2/4">
+            <h3 className="font-bold text-lg">The Book Club</h3>
+          </div>
+          <div className="flex flex-col justify-center w-1/4">
+            <h4 className="font-bold text-lg py-2">Menu</h4>
+            <NavLinks orientation="ver" />
+          </div>
+          <div className="flex flex-col justify-center w-1/4">
+            <h4 className="font-bold text-lg py-2">Contacts</h4>
+            <SocialMediaLinks />
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col justify-center w-1/4">
-        <h4>Menu</h4>
-        <NavLinks orientation="ver" />
-      </div>
-      <div className="flex flex-col justify-center w-1/4">
-        <h4>Contacts</h4>
-        <SocialMediaLinks />
-      </div>
+      <div
+        className="absolute w-full h-[25vh] bottom-[30px] bg-base-light dark:bg-base-dark z-20"
+        style={{ clipPath: "polygon(0 35%, 100% 17%, 100% 100%, 0 100%)" }}
+      />
+      <div
+        className="absolute w-full h-[25vh] bottom-[33px] bg-accent-light dark:bg-accent-dark z-10"
+        style={{ clipPath: "polygon(0 25%, 100% 17%, 100% 100%, 0 100%)" }}
+      />
     </footer>
   );
 }

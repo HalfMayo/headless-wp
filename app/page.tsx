@@ -38,6 +38,7 @@ export default function Page() {
             height={500}
             alt="about image"
             className="hidden sm:inline"
+            style={{ clipPath: "circle(40%)" }}
           />
           <div className="flex flex-col gap-4 h-full justify-center">
             <h3 className="text-4xl font-bold">Welcome to the Book Club!</h3>
