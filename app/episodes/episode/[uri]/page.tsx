@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: { uri: string } }) {
             dangerouslySetInnerHTML={{ __html: `${cleanPost.content}` }}
           />
           <div className="h-[20vh] sm:h-auto flex flex-col items-center justify-center">
-            <h3 className="text-4xl font-semibold text-center mb-4 sm:mb-0">
+            <h3 className="text-4xl font-semibold text-center mb-8">
               Listen now!
             </h3>
             <StreamingPlat />

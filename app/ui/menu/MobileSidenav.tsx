@@ -1,15 +1,13 @@
-import Image from "next/image";
 import { useState } from "react";
 import NavLinks from "./NavLinks";
 import Toggle from "./Toggle";
 import SocialMediaLinks from "./SocialMediaLinks";
 import Hamburger from "../../../public/hamburger-7-svgrepo-com.svg";
 import Close from "../../../public/close-bold-svgrepo-com.svg";
-import { useTheme } from "next-themes";
 
 export default function MobileSidenav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { theme } = useTheme();
+
   return (
     <>
       <div
@@ -27,23 +25,21 @@ export default function MobileSidenav() {
             <Hamburger
               width={36}
               height={36}
-              fill={theme === "dark" ? "white" : "black"}
+              className="fill-black dark:fill-white"
             />
           ) : (
             <Close
               width={36}
               height={36}
-              fill={theme === "dark" ? "white" : "black"}
+              className="fill-black dark:fill-white"
             />
           )}
         </button>
       </div>
       <div
         className={`${
-          isOpen && theme === "light"
-            ? "bg-black/[.6] w-screen"
-            : isOpen && theme === "dark"
-            ? "bg-white/[.6] w-screen"
+          isOpen
+            ? "dark:bg-white/[.6] bg-black/[.6] w-screen"
             : "transparent w-0"
         } h-screen transition-colors duration-500 fixed z-30 top-0 left-0`}
       >

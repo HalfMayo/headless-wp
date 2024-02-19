@@ -44,7 +44,9 @@ export default async function RecentList() {
               />
             </div>
             <div className="gap-2 flex flex-col p-4">
-              <h3 className="text-lg font-semibold">{post.title}</h3>
+              <h3 className="text-lg font-semibold line-clamp-2 text-ellipsis">
+                {post.title}
+              </h3>
               <div
                 className={clsx("text-ellipsis", {
                   "sm:line-clamp-4 line-clamp-3":

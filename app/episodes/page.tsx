@@ -3,6 +3,7 @@ import StreamingPlat from "../ui/StreamingPlat";
 import EpisodesList from "../ui/lists/EpisodesList";
 import { getPage } from "../lib/data";
 import DOMPurify from "isomorphic-dompurify";
+import Image from "next/image";
 
 export default async function Page({
   searchParams,
@@ -18,12 +19,21 @@ export default async function Page({
   return (
     <main className="flex flex-col items-center justify-center">
       <section className="flex flex-col gap-20 items-center justify-center w-[80vw] mt-[20vh] mb-[10vh]">
-        <div className="flex flex-col items-center justify-center gap-8">
-          <h2 className="text-4xl">{cleanEpisodes.title}</h2>
-          <div
-            className="sm:text-md text-lg"
-            dangerouslySetInnerHTML={{ __html: `${cleanEpisodes.content}` }}
-          ></div>
+        <div className="flex gap-8">
+          <Image
+            src="/ep2.png"
+            width={400}
+            height={400}
+            alt="episodes page pic"
+            className="hidden sm:inline"
+          />
+          <div className="flex flex-col justify-center gap-8">
+            <h2 className="text-4xl">{cleanEpisodes.title}</h2>
+            <div
+              className="sm:text-md text-lg"
+              dangerouslySetInnerHTML={{ __html: `${cleanEpisodes.content}` }}
+            ></div>
+          </div>
         </div>
         <Suspense>
           <EpisodesList displayed={displayed} />
