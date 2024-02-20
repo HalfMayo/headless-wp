@@ -1,4 +1,4 @@
-import { getEpisodes } from "@/app/lib/data";
+import { getEpisodes, getTotalCount } from "@/app/lib/data";
 import { PostSum } from "@/app/lib/definitions";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
@@ -17,11 +17,8 @@ export default async function EpisodesList({
     content: DOMPurify.sanitize(post.content),
   }));
 
-  // const emptySpaces = [];
-
-  // for (let i = 0; i < 5 - (episodes.length % 5); i++) {
-  //   emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
-  // }
+  const count = await getTotalCount("Episodes");
+  const totalCount = count.length;
 
   return (
     <>
@@ -81,7 +78,7 @@ export default async function EpisodesList({
         ))}
         {/* {emptySpaces} */}
       </ul>
-      <Pagination listLength={episodes.length} />
+      <Pagination listLength={episodes.length} totalCount={totalCount} />
     </>
   );
 }

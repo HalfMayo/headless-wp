@@ -1,9 +1,10 @@
-import { getReviews } from "@/app/lib/data";
+import { getReviews, getTotalCount } from "@/app/lib/data";
 import { PostSum } from "@/app/lib/definitions";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import Link from "next/link";
 import Pagination from "./Pagination";
+import { toDate } from "@/app/lib/utils";
 
 export default async function ReviewsList({
   displayed,
@@ -17,13 +18,8 @@ export default async function ReviewsList({
     content: DOMPurify.sanitize(post.content),
   }));
 
-  // const emptySpaces = [];
-
-  // if (reviews.length % 5 !== 0) {
-  //   for (let i = 0; i < 5 - (reviews.length % 5); i++) {
-  //     emptySpaces.push(<li className="hidden sm:block w-[15vw] h-[30vh]" />);
-  //   }
-  // }
+  const count = await getTotalCount("Reviews");
+  const totalCount = count.length;
 
   return (
     <>
@@ -52,15 +48,18 @@ export default async function ReviewsList({
               <div className="gap-2 flex flex-col p-4 ">
                 <div className="flex h-[50px] gap-2">
                   <Image
-                    src="/rev4.png"
+                    src={review.author.node.avatar.url}
                     alt="author avatar"
                     width={50}
                     height={50}
                     style={{ clipPath: "circle(40%)" }}
                   />
                   <div className="flex flex-col gap-1 h-full justify-center">
-                    <p className="text-sm">Author</p>
-                    <p className="text-sm">Mar, 1 2024</p>
+                    <p className="text-sm">
+                      {review.author.node.firstName}{" "}
+                      {review.author.node.lastName}
+                    </p>
+                    <p className="text-sm">{toDate(review.date)}</p>
                   </div>
                 </div>
                 <div className="h-44">
@@ -73,14 +72,16 @@ export default async function ReviewsList({
                   />
                 </div>
                 <hr />
-                <p className="text-sm">Comments:</p>
+                <p className="text-sm">
+                  Comments: {review.comments.nodes.length}
+                </p>
               </div>
             </Link>
           </li>
         ))}
         {/* {emptySpaces} */}
       </ul>
-      <Pagination listLength={reviews.length} />
+      <Pagination listLength={reviews.length} totalCount={totalCount} />
     </>
   );
 }

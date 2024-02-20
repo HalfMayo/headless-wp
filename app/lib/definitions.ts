@@ -9,6 +9,22 @@ export type PostSum = {
             sourceUrl: string
         }
     },
+    author: {
+        node: {
+          avatar: {
+            url: string
+          }
+          lastName: string
+          firstName: string
+        }
+      },
+      comments: {
+        nodes: [
+          {
+            id:string
+          }
+        ]
+      },
     categories: {
         nodes: {
             name: string

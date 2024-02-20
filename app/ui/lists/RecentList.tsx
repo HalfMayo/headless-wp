@@ -4,6 +4,7 @@ import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import Link from "next/link";
 import clsx from "clsx";
+import { toDate } from "@/app/lib/utils";
 
 export default async function RecentList() {
   const posts = await getRecent();
@@ -46,15 +47,17 @@ export default async function RecentList() {
             <div className="gap-2 flex flex-col p-4 ">
               <div className="flex h-[50px] gap-2">
                 <Image
-                  src="/IGprofile.jpg"
+                  src={post.author.node.avatar.url}
                   alt="author avatar"
                   width={50}
                   height={50}
                   style={{ clipPath: "circle(40%)" }}
                 />
                 <div className="flex flex-col gap-1 h-full justify-center">
-                  <p className="text-sm">The Book Club Team</p>
-                  <p className="text-sm">Mar, 1 2024</p>
+                  <p className="text-sm">
+                    {post.author.node.firstName} {post.author.node.lastName}
+                  </p>
+                  <p className="text-sm">{toDate(post.date)}</p>
                 </div>
               </div>
               <div className="h-44">
@@ -72,7 +75,7 @@ export default async function RecentList() {
                   ? `Monthly plays: ${Math.ceil(
                       Math.random() * 100000
                     ).toLocaleString()}`
-                  : `Comments:`}
+                  : `Comments: ${post.comments.nodes.length}`}
               </p>
             </div>
           </Link>

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default async function AuthorsList() {
   const profiles = await getAuthors();
-  const profilesWithRoles = profiles.map((el: Author) => ({
+  const profilesWithRoles = profiles.slice(1).map((el: Author) => ({
     ...el,
     role: el.description.split("|")[0],
     description: el.description.split("|")[1],

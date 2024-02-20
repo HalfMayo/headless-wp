@@ -4,13 +4,28 @@ export async function getRecent() {
     {
       posts(where: {categoryNotIn: "5"}, first: 5) {
         nodes {
+          date
           title
           excerpt
           uri
           content
+          author {
+            node {
+              avatar {
+                url
+              }
+              lastName
+              firstName
+            }
+          }
           featuredImage {
             node {
               sourceUrl
+            }
+          }
+          comments {
+            nodes {
+              id
             }
           }
           categories {
@@ -138,6 +153,15 @@ export async function getPost(uri:string) {
           excerpt
           title
           uri
+          author {
+            node {
+              avatar {
+                url
+              }
+              lastName
+              firstName
+            }
+          }
           featuredImage {
             node {
               sourceUrl
@@ -172,6 +196,41 @@ export async function getPost(uri:string) {
 }
   }
 
+  export async function getTotalCount(category:string) {
+    try{
+    const query = `
+    {
+      posts(where: {categoryName: "${category}"}) {
+        nodes {
+          id
+      }
+    }
+  }
+      `;
+  
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}?query=${encodeURIComponent(
+        query
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: {
+          revalidate: 0,
+        },
+      }
+    );
+  
+    const { data } = await res.json();
+    return data?.posts?.nodes;
+} catch(error) {
+    console.log(error)
+    throw new Error('Failed to fetch')
+}
+  }
+
   export async function getReviews(displayed: number) {
     try{
     const query = `
@@ -182,6 +241,20 @@ export async function getPost(uri:string) {
           excerpt
           title
           uri
+          author {
+            node {
+              avatar {
+                url
+              }
+              lastName
+              firstName
+            }
+          }
+          comments {
+            nodes {
+              id
+            }
+          }
           featuredImage {
             node {
               sourceUrl
