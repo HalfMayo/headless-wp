@@ -16,7 +16,7 @@ const config: Config = {
     },
     colors: {
       "black": "#202020",
-      "white": "#EEEEEE",
+      "white": "#fefefe",
       "base-dark": "#E99C48",
       "accent-dark": "#FFD030",
       "base-light": "#75C8E9",

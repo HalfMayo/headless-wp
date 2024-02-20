@@ -3,6 +3,7 @@
 import useDeviceSize from "@/app/hooks/useDeviceSize";
 import NavLinks from "../menu/NavLinks";
 import SocialMediaLinks from "../menu/SocialMediaLinks";
+import { montserrat } from "../fonts";
 
 export default function Footer() {
   const [height, width] = useDeviceSize();
@@ -25,7 +26,9 @@ export default function Footer() {
       >
         <div className="w-[80vw] flex items-center justify-center h-full">
           <div className="w-2/4">
-            <h3 className="font-bold text-lg">The Book Club</h3>
+            <h3 className={`font-bold text-lg ${montserrat.className}`}>
+              The Book Club
+            </h3>
           </div>
           <div className="flex flex-col justify-center w-1/4">
             <h4 className="font-bold text-lg py-2">Menu</h4>

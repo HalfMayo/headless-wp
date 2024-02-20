@@ -4,6 +4,7 @@ import useDeviceSize from "@/app/hooks/useDeviceSize";
 import MobileSidenav from "../menu/MobileSidenav";
 import NavLinks from "../menu/NavLinks";
 import Toggle from "../menu/Toggle";
+import { montserrat } from "../fonts";
 
 export default function Header() {
   const [height, width] = useDeviceSize();
@@ -17,7 +18,7 @@ export default function Header() {
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 75%, 0% 100%)" }}
           >
             <div className="w-[80vw] flex items-center justify-between h-full">
-              <p>The Book Club</p>
+              <p className={`${montserrat.className}`}>The Book Club</p>
               <div className="flex">
                 <NavLinks />
                 <Toggle />

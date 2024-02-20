@@ -4,7 +4,7 @@ const { protocol, hostname, port, pathname } = new URL(
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['thebookclub.netsons.org'],
+        domains: ['thebookclub.netsons.org', 'basketto-genius.local'],
         remotePatterns: [
             {
                 protocol: protocol.slice(0, -1),

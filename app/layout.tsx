@@ -4,8 +4,7 @@ import "./globals.css";
 import Header from "./ui/header/Header";
 import Footer from "./ui/footer/Footer";
 import { Providers } from "./providers";
-
-const inter = Inter({ subsets: ["latin"] });
+import { fira } from "./ui/fonts";
 
 export const metadata: Metadata = {
   title: "Headless WP",
@@ -29,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} flex flex-col items-center justify-center relative dark:bg-black dark:text-white`}
+        className={`${fira.className} flex flex-col items-center justify-center relative bg-white text-black dark:bg-black dark:text-white`}
       >
         <Providers>
           <Header />

@@ -45,8 +45,8 @@ export default async function ReviewsList({
                   }}
                 />
               </div>
-              <div className="gap-2 flex flex-col p-4 ">
-                <div className="flex h-[50px] gap-2">
+              <div className="gap-2 flex flex-col">
+                <div className="flex h-[58px] gap-2 bg-base-light dark:bg-base-dark text-black py-2 pl-4">
                   <Image
                     src={review.author.node.avatar.url}
                     alt="author avatar"
@@ -54,7 +54,7 @@ export default async function ReviewsList({
                     height={50}
                     style={{ clipPath: "circle(40%)" }}
                   />
-                  <div className="flex flex-col gap-1 h-full justify-center">
+                  <div className="flex flex-col gap-0.5 h-full justify-center">
                     <p className="text-sm">
                       {review.author.node.firstName}{" "}
                       {review.author.node.lastName}
@@ -62,7 +62,7 @@ export default async function ReviewsList({
                     <p className="text-sm">{toDate(review.date)}</p>
                   </div>
                 </div>
-                <div className="h-44">
+                <div className="h-44 px-4">
                   <h3 className="text-lg font-semibold line-clamp-2 text-ellipsis mb-2">
                     {review.title}
                   </h3>
@@ -71,8 +71,7 @@ export default async function ReviewsList({
                     dangerouslySetInnerHTML={{ __html: `${review.excerpt}` }}
                   />
                 </div>
-                <hr />
-                <p className="text-sm">
+                <p className="text-sm bg-base-light dark:bg-base-dark text-black p-4 rounded-b-lg">
                   Comments: {review.comments.nodes.length}
                 </p>
               </div>

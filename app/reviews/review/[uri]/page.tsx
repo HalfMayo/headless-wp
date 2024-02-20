@@ -1,4 +1,5 @@
 import { getPost } from "@/app/lib/data";
+import { montserrat } from "@/app/ui/fonts";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 
@@ -26,7 +27,9 @@ export default async function Page({ params }: { params: { uri: string } }) {
           />
         </div>
         <div className="w-[80vw]">
-          <h2 className="font-bold text-6xl text-center mb-4 sm:mb-0">
+          <h2
+            className={`font-bold text-5xl text-center mb-4 sm:mb-0 ${montserrat.className}`}
+          >
             {cleanPost.title}
           </h2>
           <div

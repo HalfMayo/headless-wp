@@ -88,7 +88,7 @@ export default function Carousel({
   return (
     <div className="relative flex items-center gap-4">
       <button
-        className="sm:static absolute z-40 sm:left-[50%] sm:translate-x-[-85%] sm:top-[100%] w-12 h-12 text-2xl"
+        className="sm:static absolute z-40 sm:left-[50%] sm:translate-x-[-85%] sm:top-[100%] w-12 h-12 text-2xl text-white sm:text-black sm:dark:text-white"
         aria-label="Previous Card"
         onClick={handlePrevious}
       >
@@ -119,7 +119,7 @@ export default function Carousel({
         </div>
       </ul>
       <button
-        className="sm:static absolute right-0 sm:right-[50%] sm:translate-x-[85%] sm:top-[100%] w-12 h-12 text-2xl"
+        className="sm:static absolute right-0 sm:right-[50%] sm:translate-x-[85%] sm:top-[100%] w-12 h-12 text-2xl text-white sm:text-black sm:dark:text-white"
         aria-label="Next Card"
         onClick={handleNext}
       >

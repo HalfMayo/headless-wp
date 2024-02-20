@@ -1,5 +1,6 @@
 import { getPost } from "@/app/lib/data";
 import StreamingPlat from "@/app/ui/StreamingPlat";
+import { montserrat } from "@/app/ui/fonts";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 
@@ -27,7 +28,9 @@ export default async function Page({ params }: { params: { uri: string } }) {
           />
         </div>
         <div className="w-[80vw]">
-          <h2 className="font-bold text-6xl text-center mb-4 sm:mb-0">
+          <h2
+            className={`font-bold text-6xl text-center mb-4 sm:mb-0 ${montserrat.className}`}
+          >
             {cleanPost.title}
           </h2>
           <div
@@ -35,7 +38,9 @@ export default async function Page({ params }: { params: { uri: string } }) {
             dangerouslySetInnerHTML={{ __html: `${cleanPost.content}` }}
           />
           <div className="h-[20vh] sm:h-auto flex flex-col items-center justify-center">
-            <h3 className="text-4xl font-semibold text-center mb-8">
+            <h3
+              className={`text-4xl font-semibold text-center mb-8 ${montserrat.className}`}
+            >
               Listen now!
             </h3>
             <StreamingPlat />
