@@ -2,7 +2,7 @@ import { getPost } from "@/app/lib/data";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import { Modal } from "./modal";
-import { convertMonth } from "@/app/lib/utils";
+import { convertMonthArr } from "@/app/lib/utils";
 
 export default async function Page({ params }: { params: { uri: string } }) {
   const post = await getPost(params.uri);
@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: { uri: string } }) {
               <strong>thebookclub</strong>
             </p>
             <p>
-              {date.getDate()} {convertMonth(date.getMonth())}{" "}
+              {date.getDate()} {convertMonthArr(date.getMonth())}{" "}
               {date.getFullYear()}
             </p>
           </div>
