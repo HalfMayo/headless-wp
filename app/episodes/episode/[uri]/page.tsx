@@ -37,14 +37,14 @@ export default async function Page({ params }: { params: { uri: string } }) {
             className="p-4 text-lg sm:p-8 sm:text-md"
             dangerouslySetInnerHTML={{ __html: `${cleanPost.content}` }}
           />
-          <div className="h-[20vh] sm:h-auto flex flex-col items-center justify-center">
-            <h3
-              className={`text-4xl font-semibold text-center mb-8 ${montserrat.className}`}
-            >
-              Listen now!
-            </h3>
-            <StreamingPlat />
-          </div>
+        </div>
+        <div className="w-screen sm:w-auto flex flex-col gap-4 sm:rounded-3xl py-6 px-8 dark:bg-accent-dark bg-accent-light">
+          <h3
+            className={`text-2xl text-center font-bold ${montserrat.className} text-black`}
+          >
+            Listen now!
+          </h3>
+          <StreamingPlat />
         </div>
       </article>
     </main>

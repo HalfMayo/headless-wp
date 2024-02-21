@@ -78,9 +78,8 @@ export default async function ReviewsList({
             </Link>
           </li>
         ))}
-        {/* {emptySpaces} */}
       </ul>
-      <Pagination listLength={reviews.length} totalCount={totalCount} />
+      <Pagination totalCount={totalCount} />
     </>
   );
 }

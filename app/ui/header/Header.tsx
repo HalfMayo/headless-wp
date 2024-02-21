@@ -14,11 +14,13 @@ export default function Header() {
       {width && width > 640 ? (
         <header className="relative w-full">
           <div
-            className="fixed flex top-0 w-full items-center justify-center h-[10vh] z-30 bg-white dark:bg-black text-black dark:text-white"
+            className="fixed flex top-0 w-full items-center justify-center h-[10vh] z-40 bg-white dark:bg-black text-black dark:text-white"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 75%, 0% 100%)" }}
           >
             <div className="w-[80vw] flex items-center justify-between h-full">
-              <p className={`${montserrat.className}`}>The Book Club</p>
+              <p className={`font-bold ${montserrat.className}`}>
+                The Book Club
+              </p>
               <div className="flex">
                 <NavLinks />
                 <Toggle />
@@ -26,11 +28,11 @@ export default function Header() {
             </div>
           </div>
           <div
-            className="fixed w-full h-[10vh] top-[30px] bg-base-light dark:bg-base-dark z-20"
+            className="fixed w-full h-[10vh] top-[30px] bg-base-light dark:bg-base-dark z-30"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 0% 85%)" }}
           />
           <div
-            className="fixed w-full h-[10vh] top-[33px] bg-accent-light dark:bg-accent-dark z-10"
+            className="fixed w-full h-[10vh] top-[33px] bg-accent-light dark:bg-accent-dark z-20"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 0% 90%)" }}
           />
         </header>
