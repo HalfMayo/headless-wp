@@ -81,7 +81,7 @@ export default async function EpisodesList({
         ))}
         {/* {emptySpaces} */}
       </ul>
-      <Pagination listLength={episodes.length} totalCount={totalCount} />
+      <Pagination totalCount={totalCount} />
     </>
   );
 }
