@@ -43,6 +43,7 @@ export default function Page() {
               height={500}
               alt="about image"
               style={{ clipPath: "circle(40%)", width: "30vw", height: "30vw" }}
+              quality={100}
             />
           </div>
           <div className="flex flex-col gap-4 h-full justify-center relative">

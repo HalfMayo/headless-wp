@@ -24,6 +24,7 @@ export default async function Page() {
               height={400}
               alt="about page pic"
               style={{ clipPath: "circle(40%)", width: "30vw", height: "30vw" }}
+              quality={100}
             />
           </div>
           <div className="flex flex-col gap-8 justify-center">

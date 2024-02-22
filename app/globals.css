@@ -47,5 +47,9 @@ img {
     transform: translateX(20px);
   }
 
+  .circle {
+    clip-path: circle(40%)
+  }
+
 }
 

@@ -69,6 +69,13 @@ export async function getPost(uri:string) {
         title
         content
         date
+        excerpt
+        author {
+          node {
+            firstName
+            lastName
+          }
+        }
         featuredImage {
           node {
             sourceUrl

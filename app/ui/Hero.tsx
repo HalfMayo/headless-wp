@@ -15,21 +15,23 @@ export default function Hero() {
     <>
       <div className="dark:inline hidden">
         <Image
-          src="/hero_dark.png"
+          src="/hero_dark_small.png"
           alt="hero"
           width={640}
-          height={640}
+          height={526}
           style={{ height: "auto", width: "100%", maxWidth: "640px" }}
+          unoptimized={true}
         />
       </div>
 
       <div className="dark:hidden inline">
         <Image
-          src="/hero_light.png"
+          src="/hero_light_small.png"
           alt="hero"
           width={640}
-          height={640}
+          height={526}
           style={{ height: "auto", width: "100%", maxWidth: "640px" }}
+          unoptimized={true}
         />
       </div>
     </>
